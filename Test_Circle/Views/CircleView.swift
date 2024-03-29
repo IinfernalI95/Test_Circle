@@ -6,17 +6,18 @@
 //
 import UIKit
 
-class CircleView: UIView {
+class CircleView: UIImageView {
     var circleData: CircleData
-    var rect: CGRect?
-    var image: UIImage?
+    var rect: CGRect
+    //var image: UIImage?
     
     init(circleData: CircleData) {
         self.circleData = circleData
-        self.image = UIImage(named: "wheel")
         
         rect = circleData.rect
         super.init(frame: .zero)
+        self.image = UIImage(named: "fantasticCircle")
+
         backgroundColor = .clear
     }
     
@@ -32,7 +33,7 @@ class CircleView: UIView {
         path.fill()
         //UIColor.blue.setFill()
         
-        if var image = image {
+        if let image = image {
             let imageRect = bounds.insetBy(dx: 0, dy: 0)
             image.draw(in: imageRect)
         }

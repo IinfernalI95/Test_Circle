@@ -14,7 +14,7 @@ class ObstacleView: UIView {
 
     func render(){}
     
-    init(id:Int, data: ObstacleData) {
+    init(id : Int, data : ObstacleData) {
         self.id = id
         self.data = data
         super.init(frame: .zero)

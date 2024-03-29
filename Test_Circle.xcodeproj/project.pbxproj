@@ -10,7 +10,6 @@
 		75290B442BADFE2A006FFC38 /* ObstackleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B432BADFE2A006FFC38 /* ObstackleData.swift */; };
 		75290B462BADFEBA006FFC38 /* ScreenUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B452BADFEBA006FFC38 /* ScreenUtility.swift */; };
 		75290B482BAE1507006FFC38 /* GameStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B472BAE1507006FFC38 /* GameStateMachine.swift */; };
-		75290B4A2BAF601B006FFC38 /* ServiseLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B492BAF601B006FFC38 /* ServiseLocator.swift */; };
 		75290B4C2BAF6135006FFC38 /* CircleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B4B2BAF6135006FFC38 /* CircleData.swift */; };
 		75290B4E2BAF6296006FFC38 /* BootStrap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B4D2BAF6296006FFC38 /* BootStrap.swift */; };
 		75290B522BB1E052006FFC38 /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75290B512BB1E052006FFC38 /* Presenter.swift */; };
@@ -21,20 +20,21 @@
 		7569B78C2BADA62B003D4E8E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7569B78B2BADA62B003D4E8E /* Base */; };
 		7569B7942BADC6AB003D4E8E /* ObstackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569B7932BADC6AB003D4E8E /* ObstackleView.swift */; };
 		7569B7962BADCC30003D4E8E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569B7952BADCC30003D4E8E /* CircleView.swift */; };
-		75840F3F2BB48116009FADCF /* ObstacleDataServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F3E2BB48116009FADCF /* ObstacleDataServise.swift */; };
+		75840F3F2BB48116009FADCF /* ObstacleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F3E2BB48116009FADCF /* ObstacleDataController.swift */; };
 		75840F412BB48139009FADCF /* CircleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F402BB48139009FADCF /* CircleDataController.swift */; };
 		75840F432BB4817D009FADCF /* InitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F422BB4817D009FADCF /* InitState.swift */; };
 		75840F452BB481AD009FADCF /* ResetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F442BB481AD009FADCF /* ResetState.swift */; };
 		75840F472BB481EB009FADCF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F462BB481EB009FADCF /* GameState.swift */; };
 		75840F492BB48209009FADCF /* AlertState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F482BB48209009FADCF /* AlertState.swift */; };
 		75840F4F2BB5E190009FADCF /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F4E2BB5E190009FADCF /* UIImage+Extention.swift */; };
+		75840F542BB6EEBC009FADCF /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F532BB6EEBC009FADCF /* GameConfig.swift */; };
+		75840F562BB753B6009FADCF /* BgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F552BB753B6009FADCF /* BgView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		75290B432BADFE2A006FFC38 /* ObstackleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstackleData.swift; sourceTree = "<group>"; };
 		75290B452BADFEBA006FFC38 /* ScreenUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenUtility.swift; sourceTree = "<group>"; };
 		75290B472BAE1507006FFC38 /* GameStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateMachine.swift; sourceTree = "<group>"; };
-		75290B492BAF601B006FFC38 /* ServiseLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiseLocator.swift; sourceTree = "<group>"; };
 		75290B4B2BAF6135006FFC38 /* CircleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleData.swift; sourceTree = "<group>"; };
 		75290B4D2BAF6296006FFC38 /* BootStrap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BootStrap.swift; sourceTree = "<group>"; };
 		75290B512BB1E052006FFC38 /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -47,13 +47,15 @@
 		7569B78D2BADA62B003D4E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7569B7932BADC6AB003D4E8E /* ObstackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstackleView.swift; sourceTree = "<group>"; };
 		7569B7952BADCC30003D4E8E /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		75840F3E2BB48116009FADCF /* ObstacleDataServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleDataServise.swift; sourceTree = "<group>"; };
+		75840F3E2BB48116009FADCF /* ObstacleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleDataController.swift; sourceTree = "<group>"; };
 		75840F402BB48139009FADCF /* CircleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDataController.swift; sourceTree = "<group>"; };
 		75840F422BB4817D009FADCF /* InitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitState.swift; sourceTree = "<group>"; };
 		75840F442BB481AD009FADCF /* ResetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetState.swift; sourceTree = "<group>"; };
 		75840F462BB481EB009FADCF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		75840F482BB48209009FADCF /* AlertState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertState.swift; sourceTree = "<group>"; };
 		75840F4E2BB5E190009FADCF /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
+		75840F532BB6EEBC009FADCF /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
+		75840F552BB753B6009FADCF /* BgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BgView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				7569B7832BADA62A003D4E8E /* View.swift */,
 				7569B7952BADCC30003D4E8E /* CircleView.swift */,
 				7569B7932BADC6AB003D4E8E /* ObstackleView.swift */,
+				75840F552BB753B6009FADCF /* BgView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -80,22 +83,20 @@
 		75290B572BB3310D006FFC38 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				75840F402BB48139009FADCF /* CircleDataController.swift */,
+				75840F3E2BB48116009FADCF /* ObstacleDataController.swift */,
 				75840F3B2BB461A0009FADCF /* StateMachine */,
-				75290B512BB1E052006FFC38 /* Presenter.swift */,
 				75290B4D2BAF6296006FFC38 /* BootStrap.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		75290B582BB3315D006FFC38 /* Services */ = {
+		75290B582BB3315D006FFC38 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
 				75290B452BADFEBA006FFC38 /* ScreenUtility.swift */,
-				75290B492BAF601B006FFC38 /* ServiseLocator.swift */,
-				75840F3E2BB48116009FADCF /* ObstacleDataServise.swift */,
-				75840F402BB48139009FADCF /* CircleDataController.swift */,
 			);
-			path = Services;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		7569B7732BADA62A003D4E8E = {
@@ -117,12 +118,14 @@
 		7569B77E2BADA62A003D4E8E /* Test_Circle */ = {
 			isa = PBXGroup;
 			children = (
+				75840F522BB6EE9C009FADCF /* Configs */,
+				75840F502BB6ED28009FADCF /* Presenters */,
 				75840F4D2BB5E156009FADCF /* Extentions */,
 				75840F4A2BB4DA49009FADCF /* Common */,
 				75290B552BB1E512006FFC38 /* Views */,
 				75290B572BB3310D006FFC38 /* Controllers */,
 				75840F3D2BB461D8009FADCF /* Entity */,
-				75290B582BB3315D006FFC38 /* Services */,
+				75290B582BB3315D006FFC38 /* Utility */,
 				7569B7882BADA62B003D4E8E /* Assets.xcassets */,
 				7569B78A2BADA62B003D4E8E /* LaunchScreen.storyboard */,
 				7569B78D2BADA62B003D4E8E /* Info.plist */,
@@ -174,6 +177,22 @@
 				75840F4E2BB5E190009FADCF /* UIImage+Extention.swift */,
 			);
 			path = Extentions;
+			sourceTree = "<group>";
+		};
+		75840F502BB6ED28009FADCF /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				75290B512BB1E052006FFC38 /* Presenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
+		75840F522BB6EE9C009FADCF /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				75840F532BB6EEBC009FADCF /* GameConfig.swift */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -252,16 +271,17 @@
 				75840F452BB481AD009FADCF /* ResetState.swift in Sources */,
 				7569B7842BADA62A003D4E8E /* View.swift in Sources */,
 				75840F412BB48139009FADCF /* CircleDataController.swift in Sources */,
-				75840F3F2BB48116009FADCF /* ObstacleDataServise.swift in Sources */,
+				75840F3F2BB48116009FADCF /* ObstacleDataController.swift in Sources */,
+				75840F562BB753B6009FADCF /* BgView.swift in Sources */,
 				75290B4C2BAF6135006FFC38 /* CircleData.swift in Sources */,
 				75290B462BADFEBA006FFC38 /* ScreenUtility.swift in Sources */,
 				7569B7962BADCC30003D4E8E /* CircleView.swift in Sources */,
 				75840F492BB48209009FADCF /* AlertState.swift in Sources */,
+				75840F542BB6EEBC009FADCF /* GameConfig.swift in Sources */,
 				75290B522BB1E052006FFC38 /* Presenter.swift in Sources */,
 				7569B7942BADC6AB003D4E8E /* ObstackleView.swift in Sources */,
 				7569B7802BADA62A003D4E8E /* AppDelegate.swift in Sources */,
 				75290B4E2BAF6296006FFC38 /* BootStrap.swift in Sources */,
-				75290B4A2BAF601B006FFC38 /* ServiseLocator.swift in Sources */,
 				75840F472BB481EB009FADCF /* GameState.swift in Sources */,
 				7569B7822BADA62A003D4E8E /* SceneDelegate.swift in Sources */,
 				75840F432BB4817D009FADCF /* InitState.swift in Sources */,

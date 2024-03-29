@@ -7,26 +7,26 @@
 
 import Foundation
 
-class ResetState: StateProtocol {
-    var serviseLocator: ServiseLocator
-    var callback: ((StateProtocol) -> Void)? = nil
+class ResetState: SuperState {
     
-    init(serviseLocator: ServiseLocator, callback: (@escaping (StateProtocol) -> Void)) {
-        self.serviseLocator = serviseLocator
-        self.callback = callback
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
     }
     
-    func enter() {
+    override func enter() {
         print("ResetState STATE ENTER \n")
-        serviseLocator.resetGame()
+        
+        obstacleDataController.resetObstacleData()
+        presenter.resetFields()
+        
         callback?(self)
     }
     
-    func update() {
+    override func update() {
         print("Reset STATE UPDATE")
     }
     
-    func exit() {
+    override func exit() {
         print("ResetState STATE EXIT \n")
     }
 }

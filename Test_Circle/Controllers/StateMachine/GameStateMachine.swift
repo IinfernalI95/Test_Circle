@@ -17,8 +17,10 @@ class GameStateMachine {
     
     var callback: ((StateProtocol) -> Void)?
     var presenter: Presenter
-    var serviseLocator: ServiseLocator?
-
+    var obstacleDataController: ObstacleDataController
+    var circleDataController: CircleDataController
+    
+    
     var initState: InitState?
     var gameState: GameState?
     var alertState: AlertState?
@@ -31,19 +33,25 @@ class GameStateMachine {
     var displayLink: CADisplayLink?
     var previousTimestamp: CFTimeInterval = 0
     
-    init(serviseLocator: ServiseLocator, presenter: Presenter) {
+    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter) {
         callback = nil
                 
-        self.serviseLocator = serviseLocator
+        self.obstacleDataController = obstacleDataController
+        self.circleDataController = circleDataController
+        
         self.presenter = presenter
         
         callback = callbackHandler
         
         guard let callback = self.callback else { return }
-        initState = InitState(serviseLocator: serviseLocator, callback: callback)
-        gameState = GameState(serviseLocator: serviseLocator, callback: callback)
-        alertState = AlertState(serviseLocator: serviseLocator, callback: callback)
-        resetState = ResetState(serviseLocator: serviseLocator, callback: callback)
+       
+        initState = InitState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        
+        gameState = GameState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        
+        alertState = AlertState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        
+        resetState = ResetState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
     }
     
     func stateComplete(state: any StateProtocol) {

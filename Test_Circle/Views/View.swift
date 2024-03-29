@@ -29,7 +29,20 @@ class View: UIViewController {
         return button
     }()
     
+//    private lazy var imageView: UIImageView = {
+//            let imageView = UIImageView()
+//            imageView.contentMode = .scaleAspectFill
+//            imageView.clipsToBounds = true
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            imageView.image = bg01.image
+//        
+//            return imageView
+//    }()
+    
+    var backgroundView = BgView()
+    var bg02 = BgView01()
     var circleView: CircleView?
+    
     var presenter: Presenter
     var timer: Timer?
     var alertActive = false
@@ -50,7 +63,8 @@ class View: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
+        view.backgroundColor = .clear
+        //view.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 0.2)
         screenUtillity = ScreenUtility(screenSize: self.view.bounds.size)
         presenter.setScreenUtility(screenUtility: screenUtillity)
         setupView()
@@ -64,7 +78,6 @@ class View: UIViewController {
 
             guard let self = self,
                   let circle = presenter.circleView,
-                  let rect = circle.rect,
                   var image = circle.image
             else { return }
             
@@ -75,7 +88,7 @@ class View: UIViewController {
             rotationAngle += 0.1
             presenter.circleView?.transform = CGAffineTransform(rotationAngle: rotationAngle)
             
-            circle.bounds = rect
+            circle.bounds = circle.rect
             
             if presenter.showAlert && !alertActive {
                 showAlert()
@@ -94,19 +107,25 @@ class View: UIViewController {
     }
     
     func setupView() {
+        createBackGround()
         createCircle()
         setupObstacklesPositions()
         createAlert()
         setUpButtons()
     }
     
+    func createBackGround() {
+        view.addSubview(backgroundView)
+        //backgroundView.frame = CGRect(x: 0, y: 0, width: backgroundView.size.width, height: backgroundView.size.height)
+        backgroundView.frame = CGRect(x: 0, y: 0, width: backgroundView.size.width, height: view.frame.size.height)
+    }
+    
     func createCircle() {
         presenter.updateCercleView()
-        guard let circle = presenter.circleView,
-              let rect = circle.rect
+        guard let circle = presenter.circleView
         else { return }
         view.addSubview(circle)
-        circle.frame = rect
+        circle.frame = circle.rect
     }
     
     func setupObstacklesPositions() {

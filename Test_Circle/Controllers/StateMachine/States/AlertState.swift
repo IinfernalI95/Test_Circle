@@ -7,28 +7,24 @@
 
 import Foundation
 
-class AlertState: StateProtocol {
-    var serviseLocator: ServiseLocator
-    var callback: ((StateProtocol) -> Void)? = nil
+class AlertState: SuperState {
     
-    init(serviseLocator: ServiseLocator, callback: (@escaping (StateProtocol) -> Void)) {
-        self.serviseLocator = serviseLocator
-        self.callback = callback
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
     }
     
-    func enter() {
+    override func enter() {
         print("AlertState STATE ENTER \n")
-        serviseLocator.presenter.activateAlert()
+        presenter.activateAlert()
     }
     
-    func update() {
-        //print("AlertState STATE UPDATE")
-        if serviseLocator.presenter.checkForResetGame() {
+    override func update() {
+        if presenter.checkForResetGame() {
             callback?(self)
         }
     }
     
-    func exit() {
+    override func exit() {
         print("AlertState STATE EXIT")
     }
 }

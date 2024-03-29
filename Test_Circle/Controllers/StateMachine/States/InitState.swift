@@ -7,17 +7,44 @@
 
 import Foundation
 
-class InitState: StateProtocol {
-    var counter = 0
-    var serviseLocator: ServiseLocator
+class SuperState: StateProtocol {
+    var obstacleDataController: ObstacleDataController
+    var circleDataController: CircleDataController
+    var presenter: Presenter
     var callback: ((StateProtocol) -> Void)? = nil
     
-    init(serviseLocator: ServiseLocator, callback: @escaping (StateProtocol) -> Void) {
-        self.serviseLocator = serviseLocator
+    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter, callback: @escaping (StateProtocol) -> Void) {
+        self.obstacleDataController = obstacleDataController
+        self.circleDataController = circleDataController
+        self.presenter = presenter
         self.callback = callback
     }
     
     func enter() {
+        
+    }
+    
+    func update() {
+        
+    }
+    
+    func exit() {
+        
+    }
+    
+}
+
+class InitState: SuperState {
+    var counter = 0
+    //var serviseLocator : ServiseLocator
+    //var callback: ((StateProtocol) -> Void)? = nil
+    
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+    }
+    
+    override func enter() {
+        
         print("INIT STATE ENTER \n")
         createPlayer()
         createObstacles()
@@ -27,30 +54,29 @@ class InitState: StateProtocol {
         callback?(self)
     }
     
-    func update() {
+    override func update() {
         //print("INIT STATE UPDATE")
     }
     
-    func exit() {
+    override func exit() {
         print("INIT STATE EXIT")
         //callback = nil
         counter = 0
     }
     
     private func createPlayer() {
-        self.serviseLocator.circleData = CircleData(radius: 28, position: CGPoint(x: 50, y: 50))
+        circleDataController.createDefaultCircle()
     }
     
     private func createObstacles() {
-        self.serviseLocator.obstacleDataService.obstacleDataArray.append(ObstacleData(id: 2, rect: CGRect(x: 100, y: 20, width: 12, height: 3)))
-        self.serviseLocator.obstacleDataService.obstacleDataArray.append(ObstacleData(id: 2, rect: CGRect(x: 100, y: 78, width: 8, height: 3)))
+        obstacleDataController.createDefaultObstacles()
     }
     
     private func createObstaclesViews() {
-        serviseLocator.presenter.createObstacleView(obstacleDataArray: serviseLocator.obstacleDataService.obstacleDataArray)
+        presenter.createObstacleView(obstacleDataArray: obstacleDataController.obstacleDataArray)
     }
+    
     private func createPlayerView() {
-        guard let playerData = self.serviseLocator.circleData else { return }
-        serviseLocator.presenter.createPlayerView(circleData: playerData)
+        presenter.createPlayerView(circleData: circleDataController.GetData())
     }
 }

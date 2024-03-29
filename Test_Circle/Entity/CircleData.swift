@@ -8,12 +8,14 @@
 import Foundation
 
 class CircleData {
-    
-    var minRadius: Double = 5
-    var maxRadius: Double = 30
     var defaultRadius: Double
     var rect = CGRect()
     var rotationAngle: CGFloat = 0.0
+    
+    init(defaultRadius: Double, position: CGPoint) {
+        self.defaultRadius = defaultRadius
+        updateSize(radius: defaultRadius, position: CGPoint(x: 0,y: 0))
+    }
     
     init(radius: Double, position: CGPoint) {
         defaultRadius = radius
@@ -33,9 +35,5 @@ class CircleData {
     func getCenterPosition() -> CGPoint {
         let radius = radius()
         return CGPoint(x: position().x + radius, y: position().y + radius )
-    }
-    
-    func updateRotationAngle(angle: CGFloat) {
-        self.rotationAngle = angle
     }
 }

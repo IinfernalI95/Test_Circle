@@ -8,31 +8,31 @@
 import Foundation
 import UIKit
 
-class GameState: StateProtocol {
+class GameState: SuperState {
     var counter = 0
-    var serviseLocator: ServiseLocator
-    var callback: ((StateProtocol) -> Void)? = nil
+    //var serviseLocator: ServiseLocator
+    //var callback: ((StateProtocol) -> Void)? = nil
     
     let feedbackGenerator = UINotificationFeedbackGenerator()
     
     //var pos: CGPoint
     
-    init(serviseLocator: ServiseLocator, callback: (@escaping (StateProtocol) -> Void)) {
-        self.serviseLocator = serviseLocator
-        self.callback = callback
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
         
         feedbackGenerator.prepare()
         //self.pos = serviseLocator.screenUtillity.getPositionFor(percentX: 100, percentY: 50)
     }
     
-    func enter() {
+    override func enter() {
         print("GameState STATE ENTER \n")
-        print("Obstacles Count -  \(serviseLocator.obstacleDataService.obstacleDataArray.count)")
+        //print("Obstacles Count - \(obstacleDataController.obstacleDataArray.count)")
     }
     
-    func update() {
+    override func update() {
         //print("Game STATE UPDATE")
         input()
+        updateRadius()
         moveObstacles()
         checkColisions()
         updateObstacleView()
@@ -42,13 +42,13 @@ class GameState: StateProtocol {
         }
     }
     
-    func exit() {
+    override func exit() {
         print("GameState STATE EXIT")
         counter = 0
     }
     
     private func moveObstacles() {
-        serviseLocator.obstacleDataService.obstacleDataArray.forEach {
+        obstacleDataController.obstacleDataArray.forEach {
             $0.move(pos: 0.05)
             
             if $0.rect.origin.x <=  -$0.rect.width {
@@ -59,27 +59,28 @@ class GameState: StateProtocol {
     }
     
     func input() {
-        serviseLocator.updateRadius()
     }
     
-    func radius() {}
+    func updateRadius() {
+        circleDataController.udateRadiusBy(userClickData: presenter.clickUserData)
+    }
     
     func checkColisionReached() -> Bool {
-        return serviseLocator.obstacleDataService.isColisionsReach()
+        return obstacleDataController.isColisionsReach()
     }
         
     func checkColisions() {
-        for obstacle in serviseLocator.obstacleDataService.obstacleDataArray {
+        for obstacle in obstacleDataController.obstacleDataArray {
             if  obstacle.haveColision {
                 continue
             }
             var points = obstacle.getPoints()
             for point in  points {
-                guard let circleData = serviseLocator.circleData else { return }
+               // guard let circleData = serviseLocator.circleData else { return }
                 
-                let distance = distance(a: point, b: circleData.getCenterPosition())
-                if  distance < circleData.radius() {
-                    serviseLocator.obstacleDataService.catchColision(obstacle: obstacle)
+                let distance = distance(a: point, b: circleDataController.getCenterPosition())
+                if  distance < circleDataController.radius() {
+                    obstacleDataController.catchColision(obstacle: obstacle)
                     feedbackGenerator.notificationOccurred(.success)
                 }
             }
@@ -87,14 +88,11 @@ class GameState: StateProtocol {
     }
     
     func updateObstacleView()  {
-        serviseLocator.presenter.updateObstacleView()
+        presenter.updateObstacleView()
     }
     
     func updateCircleView() {
-        serviseLocator.presenter.updateCercleView()
-        
-        let newAngle = CGFloat.pi / 2 // Новый угол в радианах (90 градусов)
-        serviseLocator.circleData?.updateRotationAngle(angle: newAngle)
+        presenter.updateCercleView()
     }
     
     func distance(a: CGVector, b: CGVector) -> CGFloat {

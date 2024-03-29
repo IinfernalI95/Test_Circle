@@ -9,20 +9,24 @@ import UIKit
 
 class BootStrap {
     //var playerData: CircleData = CircleData(radius : 10, position: CGPoint(x: 50, y: 50))
-    var obstacleDataServise: ObstacleDataServise
-    var serviseLocator: ServiseLocator
+    var config : gameConfig
+    //var circleData = CircleData()
+    var obstacleData = [ObstacleData]()
+    
+    var obstacleDataController: ObstacleDataController
+    var circleDataController : CircleDataController
+   // var serviseLocator: ServiseLocator
     var stateMachine: GameStateMachine
     var presenter: Presenter
     
     init() {
-        self.obstacleDataServise = ObstacleDataServise()
+        config = gameConfig()
+        self.obstacleDataController = ObstacleDataController(obstacleDataArray: obstacleData, config: config)
+        self.circleDataController = CircleDataController( config: config)
         self.presenter = Presenter()
-        self.serviseLocator = ServiseLocator(obstacleDataArray: obstacleDataServise,
-                                             //playerData: playerData,
-                                             presenter : presenter)
+        //self.serviseLocator = ServiseLocator(obstacleDataArray: obstacleDataController, presenter : presenter)
        
-        stateMachine = GameStateMachine(serviseLocator : serviseLocator,
-                                        presenter : presenter )
+        stateMachine = GameStateMachine(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter)
     }
     
     func run() {
