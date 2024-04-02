@@ -9,19 +9,14 @@ import Foundation
 import UIKit
 
 class GameState: SuperState {
-    var counter = 0
-    //var serviseLocator: ServiseLocator
-    //var callback: ((StateProtocol) -> Void)? = nil
     
     let feedbackGenerator = UINotificationFeedbackGenerator()
-    
-    //var pos: CGPoint
+    var counter = 0
     
     override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
-        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager: worldManager, presenter: presenter, callback: callback)
         
         feedbackGenerator.prepare()
-        //self.pos = serviseLocator.screenUtillity.getPositionFor(percentX: 100, percentY: 50)
     }
     
     override func enter() {
@@ -73,13 +68,13 @@ class GameState: SuperState {
             if  obstacle.haveColision {
                 continue
             }
+            
             var points = obstacle.getPoints()
             for point in  points {
-               // guard let circleData = serviseLocator.circleData else { return }
-                
                 let distance = distance(a: point, b: circleDataController.getCenterPosition())
                 if  distance < circleDataController.radius() {
                     obstacleDataController.catchColision(obstacle: obstacle)
+                    presenter.updateHealth()
                     feedbackGenerator.notificationOccurred(.success)
                 }
             }
@@ -108,13 +103,5 @@ class GameState: SuperState {
         let num1 = a.x - b.x
         let num2 = a.y - b.y
         return sqrt(num1 * num1 + num2 *  num2)
-    }
-    
-    func create() {
-        
-    }
-    
-    func render() {
-        
     }
 }

@@ -9,14 +9,12 @@ import Foundation
 
 class ObstacleDataController {
     
-    //var config : GameConfig
-    private let worldManager : WorldManager
 
     var maxColisions : Int
-    
-    
     var obstacleDataArray : [ObstacleData] = []
     var curColisions : Int
+    
+    private let worldManager : WorldManager
     
     init(obstacleDataArray : [ObstacleData], maxColisions : Int, worldManager : WorldManager ) {
         self.obstacleDataArray = obstacleDataArray

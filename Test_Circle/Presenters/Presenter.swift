@@ -14,16 +14,16 @@ class Presenter {
     let maxClickUser = 20
     let alertController: UIAlertController
     var clickUserData = 0
+    var currentHealth = 5
     var circleView: CircleView?
     var obstacleViews: [ObstacleView] = []
     var backGroundView = BgView()
     var backGroundView2 = BgView()
-
-    var bgLayers = BGLayers()
-    var worldManager : WorldManager
+    var backGroundView3 = BgView()
     var showAlert = false
     var checkReset = false
     
+    private var worldManager : WorldManager
     private var screenUtility: ScreenUtility
     
     init(worldManager: WorldManager) {
@@ -60,6 +60,10 @@ class Presenter {
         clickUserData = max(minClickUser, (clickUserData - 1))
     }
     
+    func updateHealth() {
+        currentHealth -= 1
+    }
+    
     func updateCercleView () {
         guard
             let rectX = self.circleView?.circleData.rect.origin.x,
@@ -82,18 +86,20 @@ class Presenter {
             height: size.y
         )
         UpdateCercleRotation()
-        
     }
     
     func updateBackGround() {
         let position = self.screenUtility.getPositionFor(percentX: worldManager.GetGameTick(), percentY: worldManager.GetGameTick())
-        let position2 = position.x - backGroundView2.frame.width
-        backGroundView.SetPosition(position: position.x)
-        backGroundView2.SetPosition(position: position2)
+        let dableWidth = backGroundView.frame.width * 2// + self.screenUtility.screenSize.width
+        let p = position.x.truncatingRemainder(dividingBy: dableWidth) - backGroundView.frame.width * 2
+        let p2 = p + backGroundView.frame.width //2263.125
+        let p3 = p2 + backGroundView.frame.width //2263.125
         
-        if backGroundView.position < position.x {
-            backGroundView.SetPosition(position: position.x - backGroundView2.frame.width)
-        }
+        
+        backGroundView.SetPosition(position: p)
+        backGroundView2.SetPosition(position: p2)
+        backGroundView3.SetPosition(position: p3)
+        //print("Position: \(position.x) p: \(p) p2 \(p2) p3 \(p3)")
     }
     
     func updateObstacleView () {
@@ -117,6 +123,9 @@ class Presenter {
         circleView.SetRotation(rotation: rotation)
     }
     
+    func getHealthInfo() -> Int {
+        currentHealth
+    }
     
     func getObstacles() -> [ObstacleView] {
         return obstacleViews
@@ -133,6 +142,7 @@ class Presenter {
     func resetFields() {
         checkReset = false
         showAlert = false
+        currentHealth = 5
         print(checkReset)
     }
 }

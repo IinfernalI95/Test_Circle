@@ -38,8 +38,6 @@ class SuperState: StateProtocol {
 
 class InitState: SuperState {
     var counter = 0
-    //var serviseLocator : ServiseLocator
-    //var callback: ((StateProtocol) -> Void)? = nil
     
     override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
         super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
@@ -63,7 +61,6 @@ class InitState: SuperState {
     
     override func exit() {
         print("INIT STATE EXIT")
-        //callback = nil
         counter = 0
     }
     

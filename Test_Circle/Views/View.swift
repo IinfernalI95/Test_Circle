@@ -9,6 +9,19 @@ import UIKit
 
 class View: UIViewController {
     
+    lazy var healthLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .clear
+        label.layer.cornerRadius = 20
+        label.text = "\(presenter.getHealthInfo())"
+        label.textAlignment = .center
+        label.textColor = .red
+        label.font = UIFont.boldSystemFont(ofSize: 80)
+        label.clipsToBounds = true
+
+        return label
+    }()
+    
     lazy var buttonPlus: UIButton = {
         let button = UIButton()
         button.setTitle("+", for: .normal)
@@ -61,6 +74,8 @@ class View: UIViewController {
             updateObstacles()
             updateBackGround()
             
+            healthLabel.text = "\(presenter.getHealthInfo())"
+            
             if presenter.showAlert && !alertActive {
                 showAlert()
             }
@@ -83,10 +98,12 @@ class View: UIViewController {
     
     func updateBackGround() {
         let heidth = view.frame.height
-        let width1 = heidth *  presenter.backGroundView.ratio
+        let width1 = heidth * presenter.backGroundView.ratio
         presenter.backGroundView.frame = CGRect(x: -presenter.backGroundView.position, y: 0, width: width1, height: heidth)
-        let width2 = heidth *  presenter.backGroundView2.ratio
+        let width2 = heidth * presenter.backGroundView2.ratio
         presenter.backGroundView2.frame = CGRect(x: -presenter.backGroundView2.position, y: 0, width: width2, height: heidth)
+        let width3 = heidth * presenter.backGroundView3.ratio
+        presenter.backGroundView3.frame = CGRect(x: -presenter.backGroundView3.position, y: 0, width: width2, height: heidth)
     }
     
     @objc func buttonPlusClick() {
@@ -117,6 +134,11 @@ class View: UIViewController {
         let heidth2 = view.frame.height
         let width2 = heidth *  presenter.backGroundView2.ratio
         presenter.backGroundView2.frame = CGRect(x: presenter.backGroundView2.position, y: 0, width: width2, height: heidth2)
+        
+        view.addSubview(presenter.backGroundView3)
+        let heidth3 = view.frame.height
+        let width3 = heidth2 *  presenter.backGroundView3.ratio
+        presenter.backGroundView3.frame = CGRect(x: presenter.backGroundView3.position, y: 0, width: width3, height: heidth3)
     }
     
     func createCircle() {
@@ -148,12 +170,12 @@ class View: UIViewController {
     }
     
     func setUpButtons() {
-        [buttonPlus, buttonMinus].forEach {
+        [healthLabel, buttonPlus, buttonMinus].forEach {
             view.addSubview($0)
         }
         let centerPosition = presenter.getPositionFor(percentX: 50, percentY: 50) //else { return }
+        healthLabel.frame = CGRect(x: centerPosition.x - 40, y: centerPosition.y - 40 - 300, width: 80, height: 80)
         buttonPlus.frame = CGRect(x: centerPosition.x - 40 + 80, y: centerPosition.y - 40 + 300, width: 80, height: 80)
         buttonMinus.frame = CGRect(x: centerPosition.x - 40 - 80, y: centerPosition.y - 40 + 300, width: 80, height: 80)
-
     }
 }
