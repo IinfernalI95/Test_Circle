@@ -17,8 +17,8 @@ class GameState: SuperState {
     
     //var pos: CGPoint
     
-    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
-        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
         
         feedbackGenerator.prepare()
         //self.pos = serviseLocator.screenUtillity.getPositionFor(percentX: 100, percentY: 50)
@@ -31,12 +31,14 @@ class GameState: SuperState {
     
     override func update() {
         //print("Game STATE UPDATE")
+        updateWorldTimeStep()
         input()
         updateRadius()
         moveObstacles()
         checkColisions()
         updateObstacleView()
         updateCircleView()
+        updateBackGround()
         if checkColisionReached() {
             callback?(self)
         }
@@ -48,14 +50,11 @@ class GameState: SuperState {
     }
     
     private func moveObstacles() {
-        obstacleDataController.obstacleDataArray.forEach {
-            $0.move(pos: 0.05)
-            
-            if $0.rect.origin.x <=  -$0.rect.width {
-                $0.rect.origin.x = 100
-                $0.haveColision = false
-            }
-        }
+        obstacleDataController.moveObstacles(gameTick: worldManager.GetGameTick())
+    }
+    
+    func updateWorldTimeStep() {
+        worldManager.makeTickGameStep()
     }
     
     func input() {
@@ -93,6 +92,10 @@ class GameState: SuperState {
     
     func updateCircleView() {
         presenter.updateCercleView()
+    }
+    
+    func updateBackGround() {
+        presenter.updateBackGround()
     }
     
     func distance(a: CGVector, b: CGVector) -> CGFloat {

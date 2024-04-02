@@ -29,6 +29,8 @@
 		75840F4F2BB5E190009FADCF /* UIImage+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F4E2BB5E190009FADCF /* UIImage+Extention.swift */; };
 		75840F542BB6EEBC009FADCF /* GameConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F532BB6EEBC009FADCF /* GameConfig.swift */; };
 		75840F562BB753B6009FADCF /* BgView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F552BB753B6009FADCF /* BgView.swift */; };
+		75840F592BB9B47B009FADCF /* WorldTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F582BB9B47B009FADCF /* WorldTransform.swift */; };
+		75840F5B2BB9B53E009FADCF /* WorldManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F5A2BB9B53E009FADCF /* WorldManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		75840F4E2BB5E190009FADCF /* UIImage+Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extention.swift"; sourceTree = "<group>"; };
 		75840F532BB6EEBC009FADCF /* GameConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConfig.swift; sourceTree = "<group>"; };
 		75840F552BB753B6009FADCF /* BgView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BgView.swift; sourceTree = "<group>"; };
+		75840F582BB9B47B009FADCF /* WorldTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTransform.swift; sourceTree = "<group>"; };
+		75840F5A2BB9B53E009FADCF /* WorldManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				75840F3E2BB48116009FADCF /* ObstacleDataController.swift */,
 				75840F3B2BB461A0009FADCF /* StateMachine */,
 				75290B4D2BAF6296006FFC38 /* BootStrap.swift */,
+				75840F5A2BB9B53E009FADCF /* WorldManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -118,10 +123,10 @@
 		7569B77E2BADA62A003D4E8E /* Test_Circle */ = {
 			isa = PBXGroup;
 			children = (
+				75840F4A2BB4DA49009FADCF /* Common */,
+				75840F4D2BB5E156009FADCF /* Extentions */,
 				75840F522BB6EE9C009FADCF /* Configs */,
 				75840F502BB6ED28009FADCF /* Presenters */,
-				75840F4D2BB5E156009FADCF /* Extentions */,
-				75840F4A2BB4DA49009FADCF /* Common */,
 				75290B552BB1E512006FFC38 /* Views */,
 				75290B572BB3310D006FFC38 /* Controllers */,
 				75840F3D2BB461D8009FADCF /* Entity */,
@@ -158,6 +163,7 @@
 			children = (
 				75290B432BADFE2A006FFC38 /* ObstackleData.swift */,
 				75290B4B2BAF6135006FFC38 /* CircleData.swift */,
+				75840F582BB9B47B009FADCF /* WorldTransform.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -279,12 +285,14 @@
 				75840F492BB48209009FADCF /* AlertState.swift in Sources */,
 				75840F542BB6EEBC009FADCF /* GameConfig.swift in Sources */,
 				75290B522BB1E052006FFC38 /* Presenter.swift in Sources */,
+				75840F5B2BB9B53E009FADCF /* WorldManager.swift in Sources */,
 				7569B7942BADC6AB003D4E8E /* ObstackleView.swift in Sources */,
 				7569B7802BADA62A003D4E8E /* AppDelegate.swift in Sources */,
 				75290B4E2BAF6296006FFC38 /* BootStrap.swift in Sources */,
 				75840F472BB481EB009FADCF /* GameState.swift in Sources */,
 				7569B7822BADA62A003D4E8E /* SceneDelegate.swift in Sources */,
 				75840F432BB4817D009FADCF /* InitState.swift in Sources */,
+				75840F592BB9B47B009FADCF /* WorldTransform.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

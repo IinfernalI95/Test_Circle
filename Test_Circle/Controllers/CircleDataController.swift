@@ -8,20 +8,19 @@
 import Foundation
 
 class CircleDataController {
-    var config : gameConfig
+    var config : GameConfig
   private var circleData: CircleData
     
-    init( config: gameConfig) {
+    init( config: GameConfig) {
         self.config = config
-        self.circleData = CircleData(defaultRadius: config.circleRadius, position: config.position)
-        self.config = config
+        circleData = CircleData(radius: config.circleRadius, position:  config.circlePosition)
     }
     
     func GetData() -> CircleData{
         return circleData
     }
     func createDefaultCircle() {
-        circleData = CircleData(radius: config.circleRadius, position:  config.position)
+        circleData = CircleData(radius: config.circleRadius, position:  config.circlePosition)
     }
     
     func radius() -> Double {

@@ -17,8 +17,8 @@ class ObstacleData {
         self.rect = rect
     }
     
-    func move(pos: CGFloat) {
-        rect.origin.x -= pos
+    func addToPositionX(step: CGFloat) {
+        rect.origin.x = step - rect.width
     }
     
     func getPoints() -> [CGPoint] {

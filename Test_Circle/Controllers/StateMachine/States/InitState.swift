@@ -10,12 +10,14 @@ import Foundation
 class SuperState: StateProtocol {
     var obstacleDataController: ObstacleDataController
     var circleDataController: CircleDataController
+    var worldManager : WorldManager
     var presenter: Presenter
     var callback: ((StateProtocol) -> Void)? = nil
     
-    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter, callback: @escaping (StateProtocol) -> Void) {
+    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter, callback: @escaping (StateProtocol) -> Void) {
         self.obstacleDataController = obstacleDataController
         self.circleDataController = circleDataController
+        self.worldManager = worldManager
         self.presenter = presenter
         self.callback = callback
     }
@@ -39,13 +41,14 @@ class InitState: SuperState {
     //var serviseLocator : ServiseLocator
     //var callback: ((StateProtocol) -> Void)? = nil
     
-    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
-        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
     }
     
     override func enter() {
         
         print("INIT STATE ENTER \n")
+        
         createPlayer()
         createObstacles()
         createObstaclesViews()
@@ -63,6 +66,7 @@ class InitState: SuperState {
         //callback = nil
         counter = 0
     }
+    
     
     private func createPlayer() {
         circleDataController.createDefaultCircle()

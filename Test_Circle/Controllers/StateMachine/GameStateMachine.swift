@@ -19,7 +19,7 @@ class GameStateMachine {
     var presenter: Presenter
     var obstacleDataController: ObstacleDataController
     var circleDataController: CircleDataController
-    
+    var worldManager : WorldManager
     
     var initState: InitState?
     var gameState: GameState?
@@ -33,25 +33,25 @@ class GameStateMachine {
     var displayLink: CADisplayLink?
     var previousTimestamp: CFTimeInterval = 0
     
-    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, presenter: Presenter) {
+    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, worldManager: WorldManager, presenter: Presenter) {
         callback = nil
                 
         self.obstacleDataController = obstacleDataController
         self.circleDataController = circleDataController
-        
+        self.worldManager = worldManager
         self.presenter = presenter
         
         callback = callbackHandler
         
         guard let callback = self.callback else { return }
        
-        initState = InitState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        initState = InitState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, worldManager : worldManager, presenter: presenter, callback: callback)
         
-        gameState = GameState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        gameState = GameState(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
         
-        alertState = AlertState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        alertState = AlertState(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
         
-        resetState = ResetState(obstacleDataController: obstacleDataController, circleDataController: circleDataController, presenter: presenter, callback: callback)
+        resetState = ResetState(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
     }
     
     func stateComplete(state: any StateProtocol) {
