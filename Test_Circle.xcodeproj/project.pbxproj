@@ -20,8 +20,8 @@
 		7569B78C2BADA62B003D4E8E /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7569B78B2BADA62B003D4E8E /* Base */; };
 		7569B7942BADC6AB003D4E8E /* ObstackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569B7932BADC6AB003D4E8E /* ObstackleView.swift */; };
 		7569B7962BADCC30003D4E8E /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7569B7952BADCC30003D4E8E /* CircleView.swift */; };
-		75840F3F2BB48116009FADCF /* ObstacleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F3E2BB48116009FADCF /* ObstacleDataController.swift */; };
-		75840F412BB48139009FADCF /* CircleDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F402BB48139009FADCF /* CircleDataController.swift */; };
+		75840F3F2BB48116009FADCF /* ObstacleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F3E2BB48116009FADCF /* ObstacleDataManager.swift */; };
+		75840F412BB48139009FADCF /* CircleDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F402BB48139009FADCF /* CircleDataManager.swift */; };
 		75840F432BB4817D009FADCF /* InitState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F422BB4817D009FADCF /* InitState.swift */; };
 		75840F452BB481AD009FADCF /* ResetState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F442BB481AD009FADCF /* ResetState.swift */; };
 		75840F472BB481EB009FADCF /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75840F462BB481EB009FADCF /* GameState.swift */; };
@@ -49,8 +49,8 @@
 		7569B78D2BADA62B003D4E8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7569B7932BADC6AB003D4E8E /* ObstackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstackleView.swift; sourceTree = "<group>"; };
 		7569B7952BADCC30003D4E8E /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
-		75840F3E2BB48116009FADCF /* ObstacleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleDataController.swift; sourceTree = "<group>"; };
-		75840F402BB48139009FADCF /* CircleDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDataController.swift; sourceTree = "<group>"; };
+		75840F3E2BB48116009FADCF /* ObstacleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObstacleDataManager.swift; sourceTree = "<group>"; };
+		75840F402BB48139009FADCF /* CircleDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleDataManager.swift; sourceTree = "<group>"; };
 		75840F422BB4817D009FADCF /* InitState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitState.swift; sourceTree = "<group>"; };
 		75840F442BB481AD009FADCF /* ResetState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetState.swift; sourceTree = "<group>"; };
 		75840F462BB481EB009FADCF /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
@@ -87,8 +87,8 @@
 		75290B572BB3310D006FFC38 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				75840F402BB48139009FADCF /* CircleDataController.swift */,
-				75840F3E2BB48116009FADCF /* ObstacleDataController.swift */,
+				75840F402BB48139009FADCF /* CircleDataManager.swift */,
+				75840F3E2BB48116009FADCF /* ObstacleDataManager.swift */,
 				75840F3B2BB461A0009FADCF /* StateMachine */,
 				75290B4D2BAF6296006FFC38 /* BootStrap.swift */,
 				75840F5A2BB9B53E009FADCF /* WorldManager.swift */,
@@ -276,8 +276,8 @@
 				75290B482BAE1507006FFC38 /* GameStateMachine.swift in Sources */,
 				75840F452BB481AD009FADCF /* ResetState.swift in Sources */,
 				7569B7842BADA62A003D4E8E /* View.swift in Sources */,
-				75840F412BB48139009FADCF /* CircleDataController.swift in Sources */,
-				75840F3F2BB48116009FADCF /* ObstacleDataController.swift in Sources */,
+				75840F412BB48139009FADCF /* CircleDataManager.swift in Sources */,
+				75840F3F2BB48116009FADCF /* ObstacleDataManager.swift in Sources */,
 				75840F562BB753B6009FADCF /* BgView.swift in Sources */,
 				75290B4C2BAF6135006FFC38 /* CircleData.swift in Sources */,
 				75290B462BADFEBA006FFC38 /* ScreenUtility.swift in Sources */,

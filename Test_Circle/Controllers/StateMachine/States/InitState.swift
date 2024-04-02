@@ -8,13 +8,13 @@
 import Foundation
 
 class SuperState: StateProtocol {
-    var obstacleDataController: ObstacleDataController
-    var circleDataController: CircleDataController
+    var obstacleDataController: ObstacleDataManager
+    var circleDataController: CircleDataManager
     var worldManager : WorldManager
     var presenter: Presenter
     var callback: ((StateProtocol) -> Void)? = nil
     
-    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter, callback: @escaping (StateProtocol) -> Void) {
+    init(obstacleDataController: ObstacleDataManager, circleDataController: CircleDataManager,worldManager : WorldManager, presenter: Presenter, callback: @escaping (StateProtocol) -> Void) {
         self.obstacleDataController = obstacleDataController
         self.circleDataController = circleDataController
         self.worldManager = worldManager
@@ -22,31 +22,21 @@ class SuperState: StateProtocol {
         self.callback = callback
     }
     
-    func enter() {
-        
-    }
-    
-    func update() {
-        
-    }
-    
-    func exit() {
-        
-    }
-    
+    func enter(){}
+    func update(){}
+    func exit(){}
 }
 
 class InitState: SuperState {
     var counter = 0
     
-    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+    override init(obstacleDataController: ObstacleDataManager, circleDataController: CircleDataManager,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
         super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
     }
     
     override func enter() {
         
         print("INIT STATE ENTER \n")
-        
         createPlayer()
         createObstacles()
         createObstaclesViews()

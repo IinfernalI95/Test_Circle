@@ -6,12 +6,9 @@
 //
 
 import Foundation
-class WorldTransform{
+
+class WorldTransform {
     var gameTick : CGFloat = 0.0
     var taransform = CGSize()
-    
-    init() {
-        
-    }
 }
 

@@ -51,7 +51,6 @@ class View: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -173,7 +172,7 @@ class View: UIViewController {
         [healthLabel, buttonPlus, buttonMinus].forEach {
             view.addSubview($0)
         }
-        let centerPosition = presenter.getPositionFor(percentX: 50, percentY: 50) //else { return }
+        let centerPosition = presenter.getPositionFor(percentX: 50, percentY: 50)
         healthLabel.frame = CGRect(x: centerPosition.x - 40, y: centerPosition.y - 40 - 300, width: 80, height: 80)
         buttonPlus.frame = CGRect(x: centerPosition.x - 40 + 80, y: centerPosition.y - 40 + 300, width: 80, height: 80)
         buttonMinus.frame = CGRect(x: centerPosition.x - 40 - 80, y: centerPosition.y - 40 + 300, width: 80, height: 80)

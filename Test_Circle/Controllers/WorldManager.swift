@@ -8,7 +8,6 @@
 import Foundation
 
 class WorldManager {
-    
     private var worldData: WorldTransform
     private var config: GameConfig
     

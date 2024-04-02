@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CircleDataController {
+class CircleDataManager {
     var config : GameConfig
   private var circleData: CircleData
     

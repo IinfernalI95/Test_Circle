@@ -26,7 +26,7 @@ class CircleView: UIImageView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func SetRotation(rotation : CGFloat){
+    func SetRotation(rotation : CGFloat) {
         self.rotate = rotation
     }
     

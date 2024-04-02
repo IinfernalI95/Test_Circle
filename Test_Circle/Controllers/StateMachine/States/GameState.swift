@@ -13,7 +13,7 @@ class GameState: SuperState {
     let feedbackGenerator = UINotificationFeedbackGenerator()
     var counter = 0
     
-    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+    override init(obstacleDataController: ObstacleDataManager, circleDataController: CircleDataManager,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
         super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager: worldManager, presenter: presenter, callback: callback)
         
         feedbackGenerator.prepare()

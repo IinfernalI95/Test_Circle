@@ -17,23 +17,19 @@ class GameStateMachine {
     
     var callback: ((StateProtocol) -> Void)?
     var presenter: Presenter
-    var obstacleDataController: ObstacleDataController
-    var circleDataController: CircleDataController
+    var obstacleDataController: ObstacleDataManager
+    var circleDataController: CircleDataManager
     var worldManager : WorldManager
-    
     var initState: InitState?
     var gameState: GameState?
     var alertState: AlertState?
     var resetState: ResetState?
-    
     var currentState: StateProtocol?
-
     var timer: Timer?
-    
     var displayLink: CADisplayLink?
     var previousTimestamp: CFTimeInterval = 0
     
-    init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController, worldManager: WorldManager, presenter: Presenter) {
+    init(obstacleDataController: ObstacleDataManager, circleDataController: CircleDataManager, worldManager: WorldManager, presenter: Presenter) {
         callback = nil
                 
         self.obstacleDataController = obstacleDataController

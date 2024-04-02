@@ -90,7 +90,7 @@ class Presenter {
     
     func updateBackGround() {
         let position = self.screenUtility.getPositionFor(percentX: worldManager.GetGameTick(), percentY: worldManager.GetGameTick())
-        let dableWidth = backGroundView.frame.width * 2// + self.screenUtility.screenSize.width
+        let dableWidth = backGroundView.frame.width * 2
         let p = position.x.truncatingRemainder(dividingBy: dableWidth) - backGroundView.frame.width * 2
         let p2 = p + backGroundView.frame.width //2263.125
         let p3 = p2 + backGroundView.frame.width //2263.125
@@ -115,7 +115,7 @@ class Presenter {
         }
     }
     
-    private func UpdateCercleRotation(){
+    private func UpdateCercleRotation() {
         guard let circleView = self.circleView else { return }
         let r = (screenUtility.screenSize.width / worldManager.getFieldSize().width * circleView.rect.width) * 2
         let perimeter =  2 * CGFloat.pi *  r

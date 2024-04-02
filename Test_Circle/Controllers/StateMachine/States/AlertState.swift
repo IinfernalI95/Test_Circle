@@ -9,8 +9,8 @@ import Foundation
 
 class AlertState: SuperState {
     
-    override init(obstacleDataController: ObstacleDataController, circleDataController: CircleDataController,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
-        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager : worldManager, presenter: presenter, callback: callback)
+    override init(obstacleDataController: ObstacleDataManager, circleDataController: CircleDataManager,worldManager : WorldManager, presenter: Presenter,callback: @escaping (StateProtocol) -> Void) {
+        super.init(obstacleDataController: obstacleDataController, circleDataController: circleDataController,worldManager: worldManager, presenter: presenter, callback: callback)
     }
     
     override func enter() {

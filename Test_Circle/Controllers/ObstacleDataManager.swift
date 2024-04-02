@@ -7,19 +7,18 @@
 
 import Foundation
 
-class ObstacleDataController {
+class ObstacleDataManager {
     
-
     var maxColisions : Int
     var obstacleDataArray : [ObstacleData] = []
     var curColisions : Int
     
     private let worldManager : WorldManager
     
-    init(obstacleDataArray : [ObstacleData], maxColisions : Int, worldManager : WorldManager ) {
+    init(obstacleDataArray: [ObstacleData], maxColisions: Int, worldManager: WorldManager ) {
         self.obstacleDataArray = obstacleDataArray
         self.worldManager = worldManager
-        self.maxColisions = maxColisions // config.maxObstacleColisions
+        self.maxColisions = maxColisions
         curColisions = 0
     }
     
@@ -35,7 +34,7 @@ class ObstacleDataController {
         self.maxColisions = maxColision
     }
     
-    func moveObstacles(gameTick : CGFloat){
+    func moveObstacles(gameTick : CGFloat) {
         let turn = gameTick.truncatingRemainder(dividingBy: worldManager.getFieldSize().width)
         let step = worldManager.getFieldSize().width - turn
         
@@ -44,7 +43,6 @@ class ObstacleDataController {
             $0.addToPositionX(step: step)
 
             if $0.rect.origin.x > oldPos {
-                //$0.rect.origin.x = 100
                 $0.haveColision = false
             }
         }
